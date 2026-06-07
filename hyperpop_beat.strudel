@@ -1,0 +1,35 @@
+// @title Hyperpop Beat
+// @by Malhar
+
+$BASS: 
+note("D3 C#2 F#2 A3").duckattack("0.3")
+.sound("supersaw").lpf("200")
+.slow("2")
+
+$arp:
+n("0 5 7 8").chord("<C#- D^7 F#-9 A>").voicing()
+.sound("supersaw")
+.fast("2")
+//.lpf("100")
+.orbit("4")
+
+$CHORD:
+chord("<C#- D^7 F#-9 A>").voicing()
+.sound("supersaw")
+.fast("2")
+.orbit("4")
+
+$hat: 
+sound("hh:2").beat("0,2,4,6,8,10,12,14", 16)
+.gain(1.4)
+
+$drum1:
+sound("bd").beat("0 4 8 11 14", 16)
+.gain("0.9")
+
+$drum2:
+sound("sd:1").beat("0 4 11 14", 16)
+.gain("0.9")
+
+$: s("[~sd]*2")
+
