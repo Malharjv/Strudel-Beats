@@ -1,0 +1,28 @@
+setGainCurve(x => Math.pow(x, 2))
+
+samples('github:switchangel/breaks')
+samples('github:switchangel/pad')
+samples('github:tidalcycles/uzu-drumkit')
+
+setcpm(120/2)
+$: stack(
+  s("bd sd bd sd"), 
+  note("C2 C2 G1 G1").sound("gm_acoustic_bass").gain(0.8)
+)
+setCps(170/60/4)
+$: s("breaks/2").fit()
+  .scrub(irand(16).div(16).seg(8).rib(0,1)).almostNever(ply("2 | 4"))
+  .orbit(2)
+  ._scope()
+$: s("white!8").decay(0.05).gain(0.45)
+.almostNever(ply("2 | 4"))
+
+$: s("swpad").scrub("0@5 0@3")
+  .n(4).gain(0.8).note("<c2@3 c3>")
+  .room(1).roomsize(3)
+  .phaser(0.4)
+
+$: note("<a2 c2 g#1>").lpenv(4).lpa(2)
+  .seg(8).s("supersaw").lpf(350).distort("2:5")
+
+
